@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Spring Web MVC Thymeleaf Hello World Example</title>
+
+    <!-- Boostrap core css -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}"/>
+
+    <!-- custom style -->
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">ORDER CRAFT</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/showForm}">Ajouter Client</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/showFormArticle}">Ajouter Article</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/list}">Ajouter Commande</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/search}">La liste des clients</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/searchArticle}">La liste des articles</a>
+</nav>
+
+<main role="main" class="container">
+
+    <div class="container mt-5">
+    <h2>Recherche de article</h2>
+
+    <form th:action="@{/customer/searchArticle}" method="get">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Rechercher un article" name="search" th:value="${search}">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+            </div>
+        </div>
+    </form>
+
+    <h3>Resultats de la recherche</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Libelle</th>
+            <th>Prix</th>
+            <th>Quantite</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Utilisez Thymeleaf pour itérer sur la liste des produits -->
+        <tr th:each="article : ${articles}">
+            <td th:text="${article.libelle}"></td>
+            <td th:text="${article.prix}"></td>
+             <td th:text="${article.quantite}"></td>
+          
+            <td><a class="delete" th:href="@{/customer/deleteArticle(id=${article.id})}">Delete</a></td>
+             <td> <a class="update" th:href="@{/customer/updateArticle(id=${article.id})}">Modifier</a></td>
+                     
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</main>
+<!-- /.container -->
+
+<!-- Boostrap core js -->
+<script type="text/javascript" th:src="@{webjars/bootstrap/5.2.0/js/bootstrap.min.js}"></script>
+</body>
+</html>

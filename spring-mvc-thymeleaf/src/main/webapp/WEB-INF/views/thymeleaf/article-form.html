@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Spring Web MVC Thymeleaf Hello World Example</title>
+
+    <!-- Boostrap core css -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}"/>
+
+    <!-- custom style -->
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#" style="text-decoration:none">ORDER CRAFT</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/showForm}">Ajouter Client</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/showFormArticle}">Ajouter Article</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/list}">Ajouter Commande</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/search}">La liste des clients</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/searchArticle}">La liste des articles</a>
+</nav>s
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h1>Article Form</h1>
+       <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire article</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">ORDER CRAFT
+    <a th:href="@{/customer/showForm}">Ajouter Client</a>
+    <a th:href="@{/customer/showFormArticle}">Ajouter Article</a>
+</nav>
+    <h2>Formulaire Article</h2>
+
+    <form th:action="@{/customer/saveArticle}" th:object="${article}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label for="libelle">Libelle :</label>
+        <input type="text" th:field="*{libelle}">
+        <br>
+        <label for="prix">Prix :</label>
+        <input type="text" th:field="*{prix}">
+        <br>
+        <label for="quantite">Quantite :</label>
+         <input type="text" th:field="*{quantite}">
+        <br>
+        <button type="submit">Enregistrer</button>
+    </form>
+
+    <a th:href="@{/customers}">Retour à la liste des clients</a>
+        
+
+
+
+
+       
+    </div>
+
+</main>
+<!-- /.container -->
+
+<!-- Boostrap core js -->
+<script type="text/javascript" th:src="@{webjars/bootstrap/5.2.0/js/bootstrap.min.js}"></script>
+</body>
+</html>
