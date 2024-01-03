@@ -1,6 +1,9 @@
 package com.joseph.entity;
 
 import javax.persistence.*;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Entity
@@ -21,9 +24,13 @@ public class Customer {
     @Column(name="email")
     private String email;
     
- // One-to-Many mapping avec la classe Commande
-    @OneToMany(mappedBy = "customer") 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL) 
     List<Command> commandes;
+
+    
+ // One-to-Many mapping avec la classe Commande
+ /*   @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL) 
+    List<Command> commandes;*/
 
     public Customer() {
     	 this.id=0;
@@ -69,11 +76,11 @@ public class Customer {
 		this.commandes = commandes;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", commandes=" + commandes + "]";
 	}
-
+*/
     
 }

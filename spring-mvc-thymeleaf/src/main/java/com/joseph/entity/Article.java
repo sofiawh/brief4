@@ -19,9 +19,9 @@ public class Article {
     private List<CommandArticle> commandArticles;*/
 
     // Getter and Setter methods
-    
+    @Column
     private double prix;
-    
+    @Column
     private int quantite;
 
 	public Article() {

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire CommandArticle</title>
+
+    <!-- Bootstrap core css -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}"/>
+
+    <!-- Custom style -->
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">ORDER CRAFT</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/showForm}">Ajouter Client</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/showFormArticle}">Ajouter Article</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/list}">Ajouter Commande</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/search}">La liste des clients</a>&nbsp;&nbsp;
+    <a th:href="@{/customer/searchArticle}">La liste des articles</a>
+</nav>
+
+<main role="main" class="container">
+    <div class="starter-template">
+        <h1>Customer Form</h1>
+
+        <!-- Your existing Thymeleaf code for CommandArticle form -->
+
+        <form th:action="@{/customer/saveCommandArticle}" th:object="${commandArticle}" method="post">
+            <!-- Input fields and hidden fields go here -->
+            <button type="submit">Enregistrer</button>
+        </form>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Article</th>
+                <th>Quantite</th>
+                <th>SousTotal</th>
+            </tr>
+            </thead>
+            <tbody>
+                <!-- Thymeleaf iteration for commandArticles -->
+                <tr th:each="cmdArt : ${commandArticles}">
+                    <td th:text="${cmdArt.article.libelle}"></td>
+                    <td th:text="${cmdArt.quantity}"></td>
+                    <td th:text="${cmdArt.sousTotal}"></td>
+                </tr>
+                <tr><td></td><td><h5>Total:&nbsp;</h5></td><td><h5 th:text="${commande.priceTotal}"></h5></td></tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tr>
+                <td><h5>Total:&nbsp;</h5></td>
+                <td><h5 th:text="${commande.priceTotal}"></h5></td>
+            </tr>
+        </table>
+
+        <a th:href="@{/welcome}">Retour à la liste des clients</a>
+    </div>
+</main>
+
+<!-- Bootstrap core js -->
+<script type="text/javascript" th:src="@{webjars/bootstrap/5.2.0/js/bootstrap.min.js}"></script>
+</body>
+</html>
