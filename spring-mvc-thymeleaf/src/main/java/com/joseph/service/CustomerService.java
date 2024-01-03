@@ -8,6 +8,8 @@ import com.joseph.entity.Customer;
 public interface CustomerService {
 
     public List<Customer> getCustomers();
+    
+    public List<Customer> getCustomersWithCommandes();
 
     public void saveCustomer(Customer theCustomer);
 

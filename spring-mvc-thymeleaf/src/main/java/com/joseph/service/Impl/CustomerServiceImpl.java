@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.joseph.repository.CustomerRepository;
 import com.joseph.entity.Customer;
 // import com.joseph.exception.ResourceNotFoundException;
-
+@Transactional
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
@@ -22,6 +22,16 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Customer> getCustomers() {
         return customerRepository.findAll();
     }
+    @Override
+    @Transactional
+    public List<Customer> getCustomersWithCommandes() {
+        List<Customer> customers = customerRepository.findAll();
+        customers.forEach(customer -> {
+            customer.getCommandes().size(); // Load the commandes collection
+        });
+        return customers;
+    }
+
 
     @Override
     @Transactional
